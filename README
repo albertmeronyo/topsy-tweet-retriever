@@ -12,4 +12,6 @@ topsy-tweet-retriever solves this playing around with HTTP GET parameters in Top
 
 Retrieved content is stored locally in a MySQL database with a pre-commited, static schema. Further work may turn this generic enough to allow users retrieve tweets in their favourite schemas or formats.
 
+Topsy can search tweets two years old at most.
+
 WARNING: cody maturity level *very* low
