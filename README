@@ -11,3 +11,5 @@ To solve this, some sites (like Topsy) have been filling their databases with co
 topsy-tweet-retriever solves this playing around with HTTP GET parameters in Topsy's web search interface URLs, and parses the returned HTML to cache the IDs of all tweets requested. These IDs are used to query the Twitter API with no other limitations than Twitter request rates (350 per hour in authenticated connections).
 
 Retrieved content is stored locally in a MySQL database with a pre-commited, static schema. Further work may turn this generic enough to allow users retrieve tweets in their favourite schemas or formats.
+
+WARNING: cody maturity level *very* low
