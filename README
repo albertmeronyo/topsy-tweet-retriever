@@ -1,1 +1,13 @@
+=====================
 topsy-tweet-retriever
+=====================
+
+topsy-tweet-retriever is a python script for users that need systematic access to old tweets from Twitter.
+
+Twitter has some limitations with respect to finding tweets that were generated time ago. Using the web interface or its APIs, it may be impossible for users to retrieve, e.g., "al tweets generated in July 2010 with the hastag #freedom". 
+
+To solve this, some sites (like Topsy) have been filling their databases with content streamed from Twitter every day, and provide a web interface allowing users to search all these old data. However, accessing programatically these data through the Topsy API has a cost to the user. For some, this cost may not be affordable.
+
+topsy-tweet-retriever solves this playing around with HTTP GET parameters in Topsy's web search interface URLs, and parses the returned HTML to cache the IDs of all tweets requested. These IDs are used to query the Twitter API with no other limitations than Twitter request rates (350 per hour in authenticated connections).
+
+Retrieved content is stored locally in a MySQL database with a pre-commited, static schema. Further work may turn this generic enough to allow users retrieve tweets in their favourite schemas or formats.
