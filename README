@@ -1,3 +1,20 @@
+
+=====================
+topsy_tweet_retriever_dynamic
+=====================
+
+topsy_tweet_retriever_dynamic is a python script for users that need systematic access to old tweets from Twitter.
+It is an extension to the original one: topsy-tweet-retriever
+
+The extension is that topsy_tweet_retriever_dynamic allows you to parse tweets when Topsy loads dinamicly. If you try to parse a dynamic webpage, you are not going to get any content.
+
+topsy_tweet_retriever_dynamic, allows you to parse after the dynamic data has been loaded.
+
+
+
+Topsy can search tweets two years old at most.
+
+
 =====================
 topsy-tweet-retriever
 =====================
