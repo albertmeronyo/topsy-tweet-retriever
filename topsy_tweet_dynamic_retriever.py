@@ -1,4 +1,9 @@
-
+# Script made by MariaMontenegro
+#
+# An extension to "topsy-tweet-retriever.py" but with the
+# ability to parse dynamic webpages with the use of selenium
+# 
+# Info saved in .txt file in dictionary format
 
 import json
 import simplejson
@@ -6,7 +11,6 @@ import time
 import datetime
 import time
 from datetime import date
-#from django.utils.encoding import smart_str, smart_unicode
 import re
 import sys
 import getopt
@@ -75,10 +79,19 @@ def parseTopsy(q,s,e):
 	curTweetFeed['game'] = q
 	
 	counter = 0
-	for hour in range(hours):
+	#for hour in range(hours):
+	hour = 0
+	
+	name_file = q + "_" + str(uuid.uuid4()) # + ".txt"
+	name_file_1 = name_file +'_1.txt'
+	name_file = name_file + '.txt'
+	output = open(name_file_1, 'w')
+	print range(hours) 
+	while hour < (hours):
 		offset = 0
-		while offset < 30:
-			topsy_url = "http://topsy.com/s?q="+q+"&type=tweet&mintime=" + str(starttime + (hour * 3600)) + "&maxtime=" + str(starttime + ((hour + 1) * 3600)) + "&offset="+ str(offset)
+		
+		while offset < 50:
+			topsy_url = "http://topsy.com/s?q="+q+"&type=tweet&mintime=" + str(starttime + (hour * 3600)) + "&maxtime=" + str(starttime + ((hour + 5) * 3600)) + "&offset="+ str(offset)
 			offset += 10
 			print offset
 			try:
@@ -96,19 +109,24 @@ def parseTopsy(q,s,e):
 					id_ = str(hour) + '_'+ str(counter)
 					counter += 1
 					curTweetFeed[id_] = info.text
+					output.write(curTweetFeed[id_])
+					output.write('\n')
 					
 				driver.close()
 			except ValueError:
-				name_file = q + "_" + str(uuid.uuid4()) + ".txt"
-				json.dump(curTweetFeed, open(name_file,'w'))
+				print "error"
+				#name_file = q + "_" + str(uuid.uuid4()) + ".txt"
+				#json.dump(curTweetFeed, open(name_file,'w'))
 			finally:
 				#name_file = q + "_" + str(uuid.uuid4()) + ".txt"
 				#json.dump(curTweetFeed, open(name_file,'w'))
 				driver.quit()
-
-	name_file = q + "_" + str(uuid.uuid4()) + ".txt"
-	json.dump(curTweetFeed, open(name_file,'w'))
+		hour +=2
 	
+	print "here"
+	#name_file = q + "_" + str(uuid.uuid4()) + ".txt"
+	json.dump(curTweetFeed, open(name_file,'w'))
+	output.close()
 
 if __name__ == "__main__":
 	main()
